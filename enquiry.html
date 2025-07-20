@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Enquiry | LifeDrop Blood Bank</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+  <style>
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to right, #fff0f0, #ffe5e5);
+      color: #333;
+      position: relative;
+      transition: background 0.3s, color 0.3s;
+    }
+    body.dark-mode {
+      background: linear-gradient(to right, #121212, #2a2a2a);
+      color: #eee;
+    }
+    body.dark-mode .container,
+    body.dark-mode .contact-info,
+    body.dark-mode .map,
+    body.dark-mode .faq,
+    body.dark-mode form input,
+    body.dark-mode form select,
+    body.dark-mode form textarea {
+      background: #1f1f1f;
+      color: #eee;
+      border-color: #555;
+    }
+    body.dark-mode form input:focus,
+    body.dark-mode form select:focus,
+    body.dark-mode form textarea:focus {
+      background: #2a2a2a;
+    }
+    body.dark-mode nav {
+      background: linear-gradient(to right, #333, #444);
+    }
+    body.dark-mode nav a {
+      color: white;
+    }
+    body.dark-mode nav a::after {
+      background: white;
+    }
+    body.dark-mode footer {
+      background: linear-gradient(to right, #111, #222);
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background-image: url('https://www.transparenttextures.com/patterns/symphony.png');
+      opacity: 0.05;
+      z-index: -1;
+    }
+
+    nav {
+      background: linear-gradient(to right, #d32f2f, #ff6f61);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      color: white;
+      font-weight: bold;
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      margin-left: auto;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 1.5rem;
+    }
+
+    .nav-links li a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      position: relative;
+    }
+
+    .nav-links li a::after {
+      content: '';
+      height: 2px;
+      background: white;
+      width: 0;
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      transition: 0.3s;
+    }
+
+    .nav-links li a:hover::after {
+      width: 100%;
+    }
+
+    .theme-toggle {
+      background-color: #b71c1c;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 0.4rem 0.8rem;
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 2rem auto;
+      background: white;
+      padding: 2rem 2.5rem;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    section {
+      margin-bottom: 3rem;
+      padding-bottom: 2rem;
+      border-bottom: 2px dashed #ccc;
+    }
+
+    h2, h3 {
+      color: #b71c1c;
+      margin-bottom: 1rem;
+    }
+
+    form label {
+      font-weight: 600;
+      margin-top: 1rem;
+      display: block;
+    }
+
+    form input, form select, form textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 0.5rem;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      transition: all 0.3s ease;
+    }
+
+    form input:focus, form select:focus, form textarea:focus {
+      outline: none;
+      border: 2px solid #d32f2f;
+      background: #fffaf0;
+    }
+
+    form button {
+      background: #d32f2f;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 30px;
+      margin-top: 1.5rem;
+      cursor: pointer;
+      font-weight: bold;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    form button:hover {
+      background: #b71c1c;
+      transform: translateY(-2px);
+    }
+
+    .contact-info, .map, .faq {
+      background: #ffe5e5;
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .contact-info p, .faq p {
+      margin-bottom: 0.8rem;
+    }
+
+    iframe {
+      width: 100%;
+      height: 300px;
+      border: none;
+      border-radius: 8px;
+      margin-top: 1rem;
+    }
+
+    footer {
+      background: linear-gradient(to right, #212121, #424242);
+      color: white;
+      text-align: center;
+      padding: 1.5rem;
+      margin-top: 3rem;
+      transition: background 0.3s;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="logo">LifeDrop</div>
+    <div class="nav-right">
+      <ul class="nav-links">
+        <li><a href="home.html">Home</a></li>
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="enquiry.html">Enquiry</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <button class="theme-toggle" onclick="toggleTheme()">🌗</button>
+    </div>
+  </nav>
+
+  <div class="container">
+    <section data-aos="fade-up">
+      <h2>📬 Submit Your Enquiry</h2>
+      <form id="enquiryForm">
+        <label for="name">Full Name</label>
+        <input type="text" id="name" required>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" required>
+
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" required>
+
+        <label for="userType">User Type</label>
+        <select id="userType" required>
+          <option value="">Select</option>
+          <option value="Doctor">Doctor</option>
+          <option value="Hospital">Hospital</option>
+          <option value="Donor">Donor</option>
+          <option value="Other">Other</option>
+        </select>
+
+        <label for="subject">Subject</label>
+        <input type="text" id="subject" required>
+
+        <label for="message">Message</label>
+        <textarea id="message" rows="5" required></textarea>
+
+        <label for="file">Attach File (optional)</label>
+        <input type="file" id="file">
+
+        <button type="submit">Send Enquiry</button>
+      </form>
+    </section>
+
+    <section class="contact-info" data-aos="fade-up">
+      <h3>📞 Contact Information</h3>
+      <p>Email: help@bloodbank.org</p>
+      <p>Phone: +91-9876543210</p>
+      <p>Address: LifeDrop Blood Bank, Sector 21, BloodCare City</p>
+    </section>
+
+    <section class="map" data-aos="fade-up">
+      <h3>🗺️ Find LifeDrop Blood Bank on Google Maps</h3>
+      <iframe 
+        src="https://www.google.com/maps?q=LifeDrop+Blood+Bank,+New+Delhi+India&output=embed" 
+        allowfullscreen 
+        loading="lazy" 
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </section>
+
+    <section class="faq" data-aos="fade-up">
+      <h3>❓ Frequently Asked Questions</h3>
+      <p><strong>Q: Is blood donation safe?</strong><br>Yes, it's completely safe and monitored by experts.</p>
+      <p><strong>Q: How often can I donate?</strong><br>Every 3 months for men, 4 months for women.</p>
+      <p><strong>Q: Who can donate blood?</strong><br>Aged 18–65, healthy, and over 50kg.</p>
+      <p><strong>Q: Can I donate if I take medication?</strong><br>Depends on medication—consult our staff.</p>
+      <p><strong>Q: What to eat before donating?</strong><br>Eat healthy, hydrate, avoid fatty foods.</p>
+      <p><strong>Q: How long does it take?</strong><br>30–60 min total, 8–10 min for donation.</p>
+    </section>
+  </div>
+
+  <footer>
+    &copy; 2025 LifeDrop Blood Bank | help@bloodbank.org | Terms | Privacy Policy
+  </footer>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+    document.getElementById("enquiryForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      alert("Thank you for your enquiry! We will get back to you within 24 hours.");
+      this.reset();
+    });
+
+    function toggleTheme() {
+      document.body.classList.toggle("dark-mode");
+    }
+  </script>
+</body>
+</html>
