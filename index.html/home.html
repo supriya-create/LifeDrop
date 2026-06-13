@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com https://maps.google.com https://www.google.com; script-src 'self' 'unsafe-inline' https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://unpkg.com; img-src 'self' data: https://*; font-src https://fonts.googleapis.com https://fonts.gstatic.com; frame-src https://www.google.com https://maps.google.com https://google.com; connect-src 'self' https://*; object-src 'none'; base-uri 'self';">
+  <title>LifeDrop Blood Bank | Home</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+  <style>
+    :root {
+      --main-red: #d32f2f;
+      --light-bg: #fff0f0;
+      --dark-bg: #121212;
+      --dark-text: #f5f5f5;
+    }
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--light-bg);
+      color: #333;
+      transition: background 0.3s, color 0.3s;
+      line-height: 1.6;
+    }
+    body.dark-mode {
+      background: var(--dark-bg);
+      color: var(--dark-text);
+    }
+  nav {
+  background: linear-gradient(to right, #d32f2f, #ff6f61);
+  color: white;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+    .logo {
+      font-size: 1.8rem;
+      font-weight: bold;
+    }
+    nav ul {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+  margin-right: 3rem; /* ✅ Push nav links to the left */
+}
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .toggle-theme {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: var(--main-red);
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      z-index: 1000;
+    }
+    .hero {
+  height: 100vh;
+  background-image: url('https://t3.ftcdn.net/jpg/08/11/09/30/240_F_811093034_SkGpCGDnDkOYgjuKdavOWSU667Iqf9mm.jpg');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  padding-left: 5%;
+  color: white;
+  position: relative;
+}
+
+.hero .hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 600px;
+  margin-left: -2%;
+}
+
+.hero h1 {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 6px #000;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+  text-shadow: 1px 1px 4px #000;
+}
+
+.hero button {
+  background: white;
+  color: var(--main-red);
+  padding: 0.8rem 2rem;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.core-objectives {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+.objective-card {
+  background: #fff;
+  padding: 1.2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: transform 0.3s;
+}
+.objective-card:hover {
+  transform: scale(1.03);
+}
+body.dark-mode .objective-card {
+  background: #1e1e1e;
+  color: var(--dark-text);
+}
+blockquote {
+  font-style: italic;
+  margin-top: 2rem;
+  background: #c2a4a4;
+  padding: 1rem 2rem;
+  border-left: 6px solid var(--main-red);
+  border-radius: 8px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+body.dark-mode blockquote {
+  background: #2e2e2e;
+  color: #867272;
+}
+
+    section {
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+    h2 {
+      font-size: 2.5rem;
+      color: var(--main-red);
+      margin-bottom: 1.5rem;
+    }
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    .card {
+      background: white;
+      padding: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+    }
+    .card img {
+      width: 100%;
+      border-radius: 8px;
+    }
+    .stats {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      gap: 1rem;
+      font-size: 1.2rem;
+    }
+    iframe {
+      width: 100%;
+      height: 300px;
+      border: none;
+    }
+    .newsletter input {
+      padding: 0.5rem;
+      width: 250px;
+      margin-right: 1rem;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    .newsletter button {
+      padding: 0.5rem 1rem;
+      background: var(--main-red);
+      color: white;
+      border: none;
+      border-radius: 5px;
+    }
+    footer {
+      background: #222;
+      color: white;
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+    footer a {
+      color: #ddd;
+      margin: 0 5px;
+      text-decoration: none;
+    }
+    body.dark-mode .card {
+      background: #1e1e1e;
+      color: white;
+    }
+
+    .nav-links li a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  position: relative;
+}
+
+.nav-links li a::after {
+  content: '';
+  height: 2px;
+  background: white;
+  width: 0;
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  transition: 0.3s;
+}
+
+.nav-links li a:hover::after {
+  width: 100%;
+}
+  </style>
+</head>
+<body>
+
+<button class="toggle-theme" onclick="toggleTheme()">🌗</button>
+
+<nav>
+  <div class="logo">LifeDrop</div>
+  <ul class="nav-links">
+    <li><a href="home.html">Home</a></li>
+    <li><a href="dashboard.html">Dashboard</a></li>
+    <li><a href="gallery.html">Gallery</a></li>
+    <li><a href="enquiry.html">Enquiry</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div>
+    <h1>Donate Blood. Save Lives.</h1>
+    <p>Every drop counts. Be a hero today.</p>
+    <button><a href="dashboard.html">Become a Donor</a></button>
+  </div>
+</section>
+
+<section id="about">
+  <h2>About LifeDrop</h2>
+
+  <div class="card-grid">
+    <div class="card" data-aos="fade-up">
+      <h3>Our Journey</h3>
+      <p>LifeDrop began with a vision — a vision to create a seamless, tech-enabled blood donation ecosystem across India. What started as a small student initiative has now grown into a nationwide mission supported by thousands of donors and hospitals.</p>
+    </div>
+  </div>
+
+  <div class="core-objectives">
+    <div class="objective-card" data-aos="fade-right">
+      <h4>🩸 Reliable Donations</h4>
+      <p>We ensure safe and verified donor matches through digital records and eligibility checks.</p>
+    </div>
+    <div class="objective-card" data-aos="fade-up">
+      <h4>⚙️ Tech-Driven Access</h4>
+      <p>With real-time availability dashboards, hospitals and patients find help faster.</p>
+    </div>
+    <div class="objective-card" data-aos="fade-left">
+      <h4>🌍 Community First</h4>
+      <p>We empower volunteers and communities to spread awareness and save lives.</p>
+    </div>
+  </div>
+
+  <blockquote data-aos="fade-up">
+    “Every 2 seconds, someone in India needs blood. LifeDrop was created so that no one suffers due to delay or unavailability. Together, we save lives.”
+    <br><strong>– Supriya, Founder of LifeDrop</strong>
+  </blockquote>
+</section>
+
+
+<section id="impact">
+  <h2>Our Impact</h2>
+  <div class="stats" data-aos="fade-up">
+    <div>🩸 <strong>30,000+</strong> Units Collected</div>
+    <div>🏥 <strong>120+</strong> Hospitals Served</div>
+    <div>🧑‍🤝‍🧑 <strong>15,000+</strong> Donors</div>
+    <div>🚑 <strong>500+</strong> Emergency Requests Handled</div>
+    <div>🌐 <strong>25</strong> States Connected</div>
+  </div>
+  <div class="card-grid" style="margin-top: 2rem;">
+    <div class="card" data-aos="fade-right">
+      <p><strong>Real-Time Availability:</strong> LifeDrop connects hospitals with available donors in real-time, reducing delays in emergency transfusions.</p>
+    </div>
+    <div class="card" data-aos="fade-left">
+      <p><strong>Verified Donors:</strong> Every donor on our platform undergoes a quick verification and eligibility check to ensure safety and compliance.</p>
+    </div>
+  </div>
+</section>
+
+<section id="events">
+  <h2>Recent Events</h2>
+  <div class="card-grid">
+    <div class="card" data-aos="fade-right">
+      <img src="https://www.thestatesman.com/wp-content/uploads/2017/08/1490966155-springdales-school.jpg" alt="Blood Donation Camp">
+      <p>Blood Donation Camp at Delhi Public School – 120+ units collected.</p>
+    </div>
+    <div class="card" data-aos="fade-left">
+      <img src="https://images.squarespace-cdn.com/content/v1/57a6a44d2994ca6cbb9460b6/1529551440981-HYTCAEBZSRL9DAIWVXB5/_DSC9917.jpg" alt="Awareness Campaign">
+      <p>Awareness Campaign in Jaipur Mall – 500+ people engaged.</p>
+    </div>
+    <div class="card" data-aos="zoom-in-up">
+      <img src="https://redcross.sg/images/rsz_img_6763.jpg" alt="Donor Appreciation">
+      <p>Donor Appreciation Day – Recognizing 200+ regular donors in Lucknow.</p>
+    </div>
+    <div class="card" data-aos="zoom-in-up">
+      <img src="https://images.hindustantimes.com/rf/image_size_640x362/HT/p2/2016/06/14/Pictures/blood-donation-camp-at-iehe_06c40a76-322c-11e6-a1a7-3aade94c5b51.jpg" alt="Hospital Collaboration">
+      <p>Partnership with Apollo Hospital for monthly donation drive.</p>
+    </div>
+  </div>
+</section>
+
+<section id="gallery">
+  <h2>Gallery Preview</h2>
+  <div class="card-grid">
+    <div class="card" data-aos="zoom-in">
+      <img src="https://srmap.edu.in/wp-content/uploads/2025/04/DSC00663-1024x683.jpg" alt="Blood Drive">
+      <p>Blood Drive in Ranchi</p>
+    </div>
+    <div class="card" data-aos="zoom-in">
+      <img src="https://png.pngtree.com/thumb_back/fh260/background/20250227/pngtree-cheerful-blood-donation-camp-with-volunteers-supporting-life-saving-efforts-image_16973709.jpg" alt="Volunteer">
+      <p>Volunteers during camp</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Find Us</h2>
+  <div class="map" data-aos="fade-up">
+    <iframe src="https://maps.google.com/maps?q=lifedrop%20blood%20bank&t=&z=13&ie=UTF8&iwloc=&output=embed" allowfullscreen></iframe>
+  </div>
+</section>
+
+<section class="newsletter">
+  <h2>Stay Updated</h2>
+  <p>Get updates about donation drives and emergencies</p>
+  <form id="newsletterForm">
+    <input id="newsletterEmail" type="email" placeholder="Enter your email" required>
+    <button type="submit">Subscribe</button>
+  </form>
+</section>
+
+<footer id="contact">
+  <p>© 2025 LifeDrop Blood Bank | Designed by Supriya</p>
+  <p>Ministry of Health and Family Welfare Initiative</p>
+  <p>Contact: bloodbank@support.in | +91-9876543210</p>
+  <p><a href="#">Terms</a> | <a href="#">Privacy</a> | <a href="#">Accessibility</a></p>
+</footer>
+
+<script>
+  function toggleTheme() {
+    document.body.classList.toggle('dark-mode');
+    const btn = document.querySelector('.toggle-theme');
+    btn.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌗';
+  }
+</script>
+<script src="js/api.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>AOS.init();</script>
+</body>
+</html>
