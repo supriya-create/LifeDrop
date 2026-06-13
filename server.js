@@ -46,6 +46,7 @@ app.use(rateLimit({
   legacyHeaders: false,
 }));
 
+
 app.use((req, res, next) => {
   res.set('Content-Security-Policy', "default-src 'self' data: https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com https://maps.google.com https://www.google.com; script-src 'self' 'unsafe-inline' https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://unpkg.com; img-src 'self' data: https://*; font-src https://fonts.googleapis.com https://fonts.gstatic.com; frame-src https://www.google.com https://maps.google.com; connect-src 'self' https://*; object-src 'none'; base-uri 'self';");
   next();
@@ -74,7 +75,7 @@ app.get('*', (req, res) => {
 
 app.use(errorHandler);
 
-const PORT = process.env.PORT || 5001;
+const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });
