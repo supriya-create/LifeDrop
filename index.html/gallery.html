@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com https://maps.google.com https://www.google.com; script-src 'self' 'unsafe-inline' https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://unpkg.com; img-src 'self' data: https://*; font-src https://fonts.googleapis.com https://fonts.gstatic.com; frame-src https://www.google.com https://maps.google.com https://google.com; connect-src 'self' https://*; object-src 'none'; base-uri 'self';">
+  <title>Gallery | LifeDrop Blood Bank</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to right, #fff0f0, #ffe5e5);
+      color: #333;
+    }
+nav {
+  background: linear-gradient(to right, #d32f2f, #ff6f61);
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+    .logo {
+      font-size: 1.8rem;
+      color: white;
+      font-weight: bold;
+    }
+   nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.nav-links {
+  display: flex;           /* makes links horizontal */
+  list-style: none;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  position: relative;
+}
+
+
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      position: relative;
+    }
+    nav ul li a::after {
+      content: '';
+      height: 2px;
+      background: white;
+      width: 0;
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      transition: 0.3s;
+    }
+    nav ul li a:hover::after {
+      width: 100%;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 3rem auto;
+      padding: 0 1rem;
+    }
+    .intro {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    .intro h2 {
+      color: #b71c1c;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    .filters {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    .filters button {
+      margin: 0 0.5rem;
+      padding: 0.5rem 1rem;
+      background-color: #d32f2f;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+    .filters button:hover {
+      background-color: #b71c1c;
+    }
+    .gallery {
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+    }
+    .gallery-item {
+      display: flex;
+      flex-direction: row;
+      gap: 2rem;
+      background: #fff;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 6px 25px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+      align-items: center;
+      min-height: 320px;
+    }
+    .gallery-item:hover {
+      transform: scale(1.015);
+    }
+    .gallery-item img {
+      width: 50%;
+      height: auto;
+      border-radius: 10px;
+      cursor: pointer;
+      object-fit: cover;
+      max-height: 300px;
+    }
+    .gallery-info {
+      width: 50%;
+    }
+    .description {
+      font-size: 1.2rem;
+      color: #444;
+      margin-bottom: 0.8rem;
+      font-weight: 500;
+    }
+    .feedback {
+      font-style: italic;
+      color: #777;
+      font-size: 1rem;
+    }
+    footer {
+      background: linear-gradient(to right, #212121, #424242);
+      color: white;
+      text-align: center;
+      padding: 1.5rem;
+      margin-top: 3rem;
+    }
+    .lightbox {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.8);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+    .lightbox img {
+      max-width: 90%;
+      max-height: 80%;
+      border-radius: 10px;
+    }
+    .lightbox span {
+      position: absolute;
+      top: 20px;
+      right: 40px;
+      font-size: 2rem;
+      color: white;
+      cursor: pointer;
+    }
+   .theme-toggle {
+  background-color: #b71c1c;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 0.5rem 0.8rem;
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+
+.theme-toggle:hover {
+  background-color: #b71c1c;
+}
+.dark-mode {
+  background: #1a1a1a;
+  color: #f5f5f5;
+}
+.dark-mode .gallery-item {
+  background-color: #2a2a2a;
+  color: #f0f0f0;
+}
+.dark-mode .description,
+.dark-mode .feedback {
+  color: #ddd;
+}
+
+
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="logo">LifeDrop</div>
+    <div class="nav-right">
+    <ul class="nav-links">
+    <li><a href="home.html">Home</a></li>
+    <li><a href="dashboard.html">Dashboard</a></li>
+    <li><a href="gallery.html">Gallery</a></li>
+    <li><a href="enquiry.html">Enquiry</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <button class="theme-toggle" onclick="toggleTheme()">🌗</button>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="intro" data-aos="fade-down">
+      <h2>📸 A Glimpse of Our Impact</h2>
+      <p>Over <strong>500+ lives touched</strong> — Explore our journey through snapshots from events, donation camps, and heartfelt moments.</p>
+    </div>
+
+    <div class="filters">
+      <button onclick="filterImages('all')">All</button>
+      <button onclick="filterImages('donation')">Donation</button>
+      <button onclick="filterImages('events')">Events</button>
+      <button onclick="filterImages('awards')">Awards</button>
+    </div>
+
+    <div class="gallery" id="gallery">
+      <div class="gallery-item" data-category="donation">
+        <img src="https://lh4.googleusercontent.com/proxy/HekSZd0eXHQszgdbQEtVcjp1UXxq2kd3o46T6XrJXayr5cjxonFxSYc_NuNRH5uSFUhAemi-0qF2uCDWIvAnq8XNzSaAe2nQsFxQi9UakwRuJw" alt="Donor Drive" onclick="openLightbox(this.src)">
+        <div class="gallery-info">
+          <div class="description">Mass donor drive in Delhi NCR saved 300+ lives in a single day.</div>
+          <div class="feedback">“Never thought saving lives could be so easy.” — Ramesh Verma</div>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="events">
+        <img src="http://shutterstock.com/image-photo/delhi-india-june-19-2023-600nw-2370827869.jpg" alt="Camp Setup" onclick="openLightbox(this.src)">
+        <div class="gallery-info">
+          <div class="description">Blood camp organized by LifeDrop in partnership with AIIMS.</div>
+          <div class="feedback">“Organized, efficient, and full of heart.” — Dr. Nandita</div>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="awards">
+        <img src="https://nhsbtdbe.blob.core.windows.net/umbraco-assets-corp/15078/david-watson.jpg" alt="Award Ceremony" onclick="openLightbox(this.src)">
+        <div class="gallery-info">
+          <div class="description">Received the 'Red Heart Award' for emergency contributions in 2024.</div>
+          <div class="feedback">“We’re honored to be recognized for saving lives.” — LifeDrop Team</div>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="donation">
+        <img src="https://csrbox.org/company/proj_img/1608660916bl.jpg" alt="Volunteer" onclick="openLightbox(this.src)">
+        <div class="gallery-info">
+          <div class="description">Over 500 student volunteers mobilized across 15 campuses.</div>
+          <div class="feedback">“Proud to contribute to a cause this vital.” — Neha Singh</div>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="events">
+        <img src="https://d23qowwaqkh3fj.cloudfront.net/wp-content/uploads/2024/06/blood-donation-rally-1024x684.jpg" alt="Outreach" onclick="openLightbox(this.src)">
+        <div class="gallery-info">
+          <div class="description">Public awareness event on the importance of rare blood types.</div>
+          <div class="feedback">“Education saves as much as donation.” — Campaign Lead</div>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="awards">
+        <img src="https://assets.thehansindia.com/h-upload/2025/06/15/1559841-sri-city-foundation.webp" alt="Medal" onclick="openLightbox(this.src)">
+        <div class="gallery-info">
+          <div class="description">Recognized by Ministry of Health for outstanding community work.</div>
+          <div class="feedback">“Honored to set an example in healthcare tech.” — BloodLink Coordinators</div>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="donation">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRftVn1VI3pp_fbRpdjHuD3VpQh5gTi4Pgb-w&s" alt="Save Lives" onclick="openLightbox(this.src)">
+        <div class="gallery-info">
+          <div class="description">Every drop counts. Blood saved 3 newborns this week.</div>
+          <div class="feedback">“We’re not donors, we’re life-givers.” — Anonymous Hero</div>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="events">
+        <img src="http://ceragem.co.in/wp-content/uploads/2023/07/blood-donation5.jpg.webp" alt="Team Work" onclick="openLightbox(this.src)">
+        <div class="gallery-info">
+          <div class="description">Team effort at LifeDrop’s 50th district campaign.</div>
+          <div class="feedback">“Together we achieved the impossible.” — Campaign Team</div>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="awards">
+        <img src="https://www.mohanfoundation.org/images/activity_slideshow/9174-bnandelaug1.jpg" alt="Recognition" onclick="openLightbox(this.src)">
+        <div class="gallery-info">
+          <div class="description">LifeDrop honored at National Donor Summit 2025.</div>
+          <div class="feedback">“This one’s for every volunteer and every donor.” — CEO</div>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="donation">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwq3bv2ETbLFCo-O6E9-gqVaCli1REuL96CQ&s" alt="Patient Support" onclick="openLightbox(this.src)">
+        <div class="gallery-info">
+          <div class="description">Critical patient support enabled by 24/7 blood availability.</div>
+          <div class="feedback">“We felt supported at our darkest hour.” — Patient’s Family</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="lightbox" id="lightbox">
+    <span onclick="closeLightbox()">&times;</span>
+    <img id="lightbox-img" src="" alt="Enlarged view">
+  </div>
+
+  <footer>
+    &copy; 2025 LifeDrop Blood Bank | help@bloodbank.org | Terms | Privacy Policy
+  </footer>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+    function openLightbox(src) {
+      document.getElementById('lightbox-img').src = src;
+      document.getElementById('lightbox').style.display = 'flex';
+    }
+    function closeLightbox() {
+      document.getElementById('lightbox').style.display = 'none';
+    }
+    function filterImages(category) {
+      const items = document.querySelectorAll('.gallery-item');
+      items.forEach(item => {
+        if (category === 'all' || item.dataset.category === category) {
+          item.style.display = 'flex';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    }
+    function toggleTheme() {
+  document.body.classList.toggle('dark-mode');
+}
+
+  </script>
+</body>
+</html>
