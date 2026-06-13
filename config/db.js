@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const connectDB = async () => {
-  const uri = process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/lifedrop';
+  const uri = process.env.MONGO_URI || 'mongodb+srv://wedding_user:<db_password>@cluster0.9vko4bg.mongodb.net/?appName=Cluster0';
 
   try {
     await mongoose.connect(uri, {
